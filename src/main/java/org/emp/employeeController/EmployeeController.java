@@ -2,7 +2,6 @@ package org.emp.employeeController;
 
 import lombok.RequiredArgsConstructor;
 import org.emp.dto.Employee;
-import org.emp.entity.EmployeeEntity;
 import org.emp.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ public class EmployeeController {
     }
 
     @GetMapping("get-all")
-    public List<EmployeeEntity> getAll(){
+    public List<Employee> getAll(){
         return service.getAll();
     }
 
