@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EmployeeServideImpl implements EmployeeService {
+class EmployeeServideImpl implements EmployeeService {
 
 
     final EmployeeRepository repository;
@@ -31,12 +31,20 @@ public class EmployeeServideImpl implements EmployeeService {
     public List<Employee> getAll() {
 
         List<Employee> employeeList= new ArrayList<>();
-
         List<EmployeeEntity> allEntityList = repository.findAll();
 
         allEntityList.forEach(entity -> {
-           employeeList.add(mapper.convertValue(entity,Employee.class))
+           employeeList.add(mapper.convertValue(entity,Employee.class));
         });
-       return  employeeList;
+        return  employeeList;
     }
+
+    @Override
+    public void deleteEmployeeById(Long id) {
+
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        }
+    }
+
 }
