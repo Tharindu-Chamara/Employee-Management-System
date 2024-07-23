@@ -47,4 +47,12 @@ class EmployeeServideImpl implements EmployeeService {
         }
     }
 
+    @Override
+    public void updateEmployee(Employee employee) {
+        if(repository.findById(employee.getId()).isPresent()){
+            repository.save(mapper.convertValue(employee,EmployeeEntity.class));
+
+        }
+    }
+
 }
