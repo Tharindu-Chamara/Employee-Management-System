@@ -34,11 +34,20 @@ public class EmployeeController {
         service.deleteEmployeeById(id);
         return "Deleted";
      }
+
      @PutMapping("/update-data")
      public void updateDataEmployee(@RequestBody  Employee employee){
-      service.updateEmployee(employee);
+        service.updateEmployee(employee);
+     }
 
+     @GetMapping("/find-byId/{id}")
+     public Employee findByIdEmployee(@PathVariable Long id){
+         return  service.findById(id);
+     }
 
-    }
 
 }
+
+
+
+
