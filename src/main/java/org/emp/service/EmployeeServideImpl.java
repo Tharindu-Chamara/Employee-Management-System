@@ -65,4 +65,9 @@ class EmployeeServideImpl implements EmployeeService {
         return new Employee();
     }
 
+    @Override
+    public Employee findByFirstname(String firstname) {
+      return  mapper.convertValue(repository.findByFirstname(firstname),Employee.class) ;
+    }
+
 }
